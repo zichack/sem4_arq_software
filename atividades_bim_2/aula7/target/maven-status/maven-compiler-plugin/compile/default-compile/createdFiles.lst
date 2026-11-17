@@ -1,0 +1,5 @@
+br\com\hexagonal\domain\ports\out\soap\NotaFiscalSoap.class
+br\com\hexagonal\domain\ports\out\smtp\EmailSmtp.class
+br\com\hexagonal\infra\adapters\out\messaging\BoletoMessagingSimulado.class
+br\com\hexagonal\infra\adapters\out\smtp\EmailSmtpSimulado.class
+br\com\hexagonal\infra\adapters\out\soap\NotaFiscalSoapSimulado.class

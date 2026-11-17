@@ -1,0 +1,17 @@
+C:\Users\MATEUSMAURICIOZICHAC\Documents\exercicios_arq_software\atividades_bim_2\aula7\src\main\java\br\com\hexagonal\application\FaturaServiceImp.java
+C:\Users\MATEUSMAURICIOZICHAC\Documents\exercicios_arq_software\atividades_bim_2\aula7\src\main\java\br\com\hexagonal\domain\entities\Fatura.java
+C:\Users\MATEUSMAURICIOZICHAC\Documents\exercicios_arq_software\atividades_bim_2\aula7\src\main\java\br\com\hexagonal\domain\ports\in\FaturaService.java
+C:\Users\MATEUSMAURICIOZICHAC\Documents\exercicios_arq_software\atividades_bim_2\aula7\src\main\java\br\com\hexagonal\domain\ports\out\messaging\BoletoMessaging.java
+C:\Users\MATEUSMAURICIOZICHAC\Documents\exercicios_arq_software\atividades_bim_2\aula7\src\main\java\br\com\hexagonal\domain\ports\out\persistence\FaturaRepository.java
+C:\Users\MATEUSMAURICIOZICHAC\Documents\exercicios_arq_software\atividades_bim_2\aula7\src\main\java\br\com\hexagonal\domain\ports\out\smtp\EmailSmtp.java
+C:\Users\MATEUSMAURICIOZICHAC\Documents\exercicios_arq_software\atividades_bim_2\aula7\src\main\java\br\com\hexagonal\domain\ports\out\soap\NotaFiscalSoap.java
+C:\Users\MATEUSMAURICIOZICHAC\Documents\exercicios_arq_software\atividades_bim_2\aula7\src\main\java\br\com\hexagonal\HexagonalApplication.java
+C:\Users\MATEUSMAURICIOZICHAC\Documents\exercicios_arq_software\atividades_bim_2\aula7\src\main\java\br\com\hexagonal\infra\adapters\in\rest\controllers\FaturaController.java
+C:\Users\MATEUSMAURICIOZICHAC\Documents\exercicios_arq_software\atividades_bim_2\aula7\src\main\java\br\com\hexagonal\infra\adapters\in\rest\dtos\FaturaPostRequest.java
+C:\Users\MATEUSMAURICIOZICHAC\Documents\exercicios_arq_software\atividades_bim_2\aula7\src\main\java\br\com\hexagonal\infra\adapters\in\rest\dtos\FaturaPostResponse.java
+C:\Users\MATEUSMAURICIOZICHAC\Documents\exercicios_arq_software\atividades_bim_2\aula7\src\main\java\br\com\hexagonal\infra\adapters\out\messaging\BoletoMessagingSimulado.java
+C:\Users\MATEUSMAURICIOZICHAC\Documents\exercicios_arq_software\atividades_bim_2\aula7\src\main\java\br\com\hexagonal\infra\adapters\out\persistence\FaturaRepositoryImp.java
+C:\Users\MATEUSMAURICIOZICHAC\Documents\exercicios_arq_software\atividades_bim_2\aula7\src\main\java\br\com\hexagonal\infra\adapters\out\persistence\jpa\FaturaEntityJpa.java
+C:\Users\MATEUSMAURICIOZICHAC\Documents\exercicios_arq_software\atividades_bim_2\aula7\src\main\java\br\com\hexagonal\infra\adapters\out\persistence\jpa\FaturaRepositoryJpa.java
+C:\Users\MATEUSMAURICIOZICHAC\Documents\exercicios_arq_software\atividades_bim_2\aula7\src\main\java\br\com\hexagonal\infra\adapters\out\smtp\EmailSmtpSimulado.java
+C:\Users\MATEUSMAURICIOZICHAC\Documents\exercicios_arq_software\atividades_bim_2\aula7\src\main\java\br\com\hexagonal\infra\adapters\out\soap\NotaFiscalSoapSimulado.java
