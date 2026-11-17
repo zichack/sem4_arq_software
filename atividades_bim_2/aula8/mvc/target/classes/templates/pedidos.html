@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Pedidos - MVC</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 24px; max-width: 900px; }
+    nav a { margin-right: 16px; font-weight: bold; }
+    .msg-ok { color: #155724; background: #d4edda; padding: 8px 12px; margin: 12px 0; border-radius: 4px; }
+    .msg-err { color: #721c24; background: #f8d7da; padding: 8px 12px; margin: 12px 0; border-radius: 4px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 16px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background: #f2f2f2; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a th:href="@{/products}">Produtos</a>
+    <a th:href="@{/estoque}">Estoque</a>
+    <a th:href="@{/pedidos}">Pedidos</a>
+  </nav>
+
+  <h1>Pedidos</h1>
+
+  <div th:if="${sucesso}" class="msg-ok" th:text="${sucesso}"></div>
+  <div th:if="${erro}" class="msg-err" th:text="${erro}"></div>
+
+  <form th:action="@{/pedidos}" method="post">
+    <label>Produto:
+      <select name="productId" required>
+        <option th:each="p : ${products}"
+                th:value="${p.id}"
+                th:text="${p.nome + ' - R$ ' + p.preco + ' (' + p.status + ')'}"></option>
+      </select>
+    </label>
+    <label>Quantidade: <input type="number" name="quantidade" min="1" required></label>
+    <button type="submit">Criar Pedido</button>
+  </form>
+
+  <h2>Pedidos Registrados</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Produto</th>
+        <th>Quantidade</th>
+        <th>Valor Total</th>
+        <th>Status</th>
+        <th>ID da Fatura</th>
+        <th>Ação</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="ped : ${pedidos}">
+        <td th:text="${ped.id}"></td>
+        <td th:text="${ped.product.nome}"></td>
+        <td th:text="${ped.quantidade}"></td>
+        <td th:text="${ped.valorTotal}"></td>
+        <td th:text="${ped.status}"></td>
+        <td th:text="${ped.faturaId != null ? ped.faturaId : '-'}"></td>
+        <td>
+          <form th:if="${ped.status.name() == 'ABERTO'}"
+                th:action="@{'/pedidos/' + ${ped.id} + '/fechar'}"
+                method="post">
+            <button type="submit">Fechar Pedido</button>
+          </form>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
