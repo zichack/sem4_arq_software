@@ -1,0 +1,7 @@
+stateDiagram-v2
+    [*] --> INDISPONIVEL : criarProduto()
+    INDISPONIVEL --> DISPONIVEL : entradaEstoque() [estoque > 0]
+    DISPONIVEL --> INDISPONIVEL : saidaEstoque() [estoque == 0]
+    INDISPONIVEL --> DESCONTINUADO : descontinuar() [perfil == ADM]
+    DISPONIVEL --> DESCONTINUADO : descontinuar() [perfil == ADM]
+    DESCONTINUADO --> [*]

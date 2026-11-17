@@ -1,0 +1,50 @@
+sequenceDiagram
+    actor TimeDeEstoque as Time de Estoque
+    participant Controller as EstoqueController
+    participant Service as EstoqueService
+    participant ProductRepo as ProductRepository
+    participant EstoqueRepo as EstoqueRepository
+
+    Note over TimeDeEstoque, EstoqueRepo: Rotina de Entrada de Estoque
+    TimeDeEstoque->>Controller: POST /estoque/entrada
+    Controller->>Service: registrarEntrada(produtoId, quantidade)
+    Service->>ProductRepo: findById(produtoId)
+    ProductRepo-->>Service: Product
+
+    alt Produto está DESCONTINUADO
+        Service-->>Controller: Erro (produto descontinuado não pode ser manipulado)
+        Controller-->>TimeDeEstoque: redirect /estoque (exibe erro)
+    else Produto pode receber entrada
+        Service->>Service: soma quantidade no estoque
+        opt Estoque saiu de zero
+            Service->>Service: altera status para DISPONIVEL
+        end
+        Service->>ProductRepo: save(product)
+        ProductRepo-->>Service: Product
+        Service->>EstoqueRepo: save(movimentacaoEntrada)
+        EstoqueRepo-->>Service: MovimentacaoEstoque
+        Service-->>Controller: MovimentacaoEstoque
+        Controller-->>TimeDeEstoque: redirect /estoque
+    end
+
+    Note over TimeDeEstoque, EstoqueRepo: Rotina de Saída de Estoque
+    TimeDeEstoque->>Controller: POST /estoque/saida
+    Controller->>Service: registrarSaida(produtoId, quantidade)
+    Service->>ProductRepo: findById(produtoId)
+    ProductRepo-->>Service: Product
+
+    alt Produto DESCONTINUADO ou sem estoque disponível
+        Service-->>Controller: Erro (saída não permitida)
+        Controller-->>TimeDeEstoque: redirect /estoque (exibe erro)
+    else Estoque suficiente disponível
+        Service->>Service: subtrai quantidade do estoque
+        opt Estoque zerou
+            Service->>Service: altera status para INDISPONIVEL
+        end
+        Service->>ProductRepo: save(product)
+        ProductRepo-->>Service: Product
+        Service->>EstoqueRepo: save(movimentacaoSaida)
+        EstoqueRepo-->>Service: MovimentacaoEstoque
+        Service-->>Controller: MovimentacaoEstoque
+        Controller-->>TimeDeEstoque: redirect /estoque
+    end
